@@ -94,15 +94,11 @@ Durante a parada, HTTP deve aparecer como falha e DNS pode continuar resolvendo.
 - O protótipo não envia notificações externas, não autentica usuários no painel local e não substitui monitoramento de produção.
 - Faça os testes somente neste ambiente local, conforme as regras da disciplina.
 
-## Gravação de até 10 minutos
-
-Todos os integrantes devem aparecer e explicar uma parte. Mostrem os serviços em execução e os resultados observados na demonstração. Publiquem o vídeo como não listado ou em nuvem com acesso liberado ao professor e incluam o link no relatório.
 
 ## Declaração de uso de IA generativa
 
-Rascunho para conferência antes da entrega: “Durante a preparação deste conteúdo, os autores utilizaram o assistente OpenAI Codex para apoiar o planejamento, a escrita e a revisão do código e do documento. Após esse apoio, os autores revisaram, executaram e editaram o conteúdo, compreendem o funcionamento da solução e assumem responsabilidade integral pelo que entregam.”
+Durante a preparação deste conteúdo, os autores utilizaram o assistente OpenAI Codex para apoiar o planejamento, a escrita e a revisão do código e do documento. Após esse apoio, os autores revisaram, executaram e editaram o conteúdo, compreendem o funcionamento da solução e assumem responsabilidade integral pelo que entregam.
 
-Mantenham essa declaração somente se todos os integrantes confirmarem que revisaram e conseguem explicar o material. Completem a lista de ferramentas/versões caso a equipe use outras ferramentas. O enunciado exige declaração de uso de IA.
 
 ## Referências
 
