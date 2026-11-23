@@ -8,7 +8,7 @@ import logging
 class TargetHandler(BaseHTTPRequestHandler):
     server_version = "VigiaNetTarget/1.0"
 
-    def do_GET(self):  # noqa: N802 - nome definido pela API da biblioteca padrão
+    def do_GET(self):
         if self.path != "/health":
             self.send_error(404, "Endpoint não encontrado")
             return
