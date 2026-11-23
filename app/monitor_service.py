@@ -83,7 +83,7 @@ class StatusHandler(BaseHTTPRequestHandler):
     state = None
     server_version = "VigiaNetMonitor/1.0"
 
-    def do_GET(self):  # noqa: N802 - nome definido pela API da biblioteca padrão
+    def do_GET(self):
         if self.path not in ("/", "/status"):
             self.send_error(404, "Endpoint não encontrado")
             return
