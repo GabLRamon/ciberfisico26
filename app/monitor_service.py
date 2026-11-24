@@ -82,23 +82,37 @@ class MonitorState:
 class StatusHandler(BaseHTTPRequestHandler):
     state = None
     server_version = "VigiaNetMonitor/1.0"
+    index_file = Path(__file__).with_name("index.html")
 
     def do_GET(self):
-        if self.path not in ("/", "/status"):
-            self.send_error(404, "Endpoint não encontrado")
+        if self.path == "/status":
+            if not self.index_file.exists():
+                self.send_error(404, "Painel HTML não encontrado")
+                return
+            body = self.index_file.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
             return
-        body = json.dumps(self.state.snapshot(), ensure_ascii=False, indent=2).encode("utf-8")
-        self.send_response(200)
-        self.send_header("Content-Type", "application/json; charset=utf-8")
-        self.send_header("Cache-Control", "no-store")
-        self.send_header("Content-Length", str(len(body)))
-        self.end_headers()
-        self.wfile.write(body)
+
+        if self.path == "/status/json":
+            body = json.dumps(self.state.snapshot(), ensure_ascii=False, indent=2).encode("utf-8")
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+            return
+
+        self.send_error(404, "Endpoint não encontrado")
 
     def log_message(self, fmt, *args):
         logging.info("painel %s - %s", self.address_string(), fmt % args)
-
-
+        
 def monitor_loop(state, interval_seconds, log_path, stop_event):
     path = Path(log_path)
     path.parent.mkdir(parents=True, exist_ok=True)
